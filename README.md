@@ -1,17 +1,17 @@
 # Electronics_Ecommerce Project
 
-1. [Project Overview](##Project-overview)
-2. [Project Structure](##Project-structure)
+1. [Project Overview](#Project-overview)
+2. [Project Structure](#Project-structure)
 
 
 
 
-## Project Overview
+# Project Overview
 - This project is a full-stack e-commerce application for an online electronics store, built with Node.js, Express, MySQL, and Vue 3. It provides the backend and frontend to support user authentication, product listings, order processing, and secure routing in a fully integrated e-commerce platform.
 
 The backend is structured to handle the business logic, API routing, and data management, while the frontend provides a dynamic and interactive user interface for customers to browse products, place orders, and manage their accounts. Both parts of the application follow best software engineering principles to ensure scalability, security, and performance.
 
-## Project Structure
+# Project Structure
 This project follows a modular folder structure designed for **clarity**, **scalability**, and **testability**, adhering to best software engineering practices.
 
 ```bash
