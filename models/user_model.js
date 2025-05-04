@@ -11,7 +11,7 @@ export async function createUser({ first_name, last_name, email, password }){
 }
 
 export async function findUserByEmail(email){
-    const sql = "SELECT * FROM users WHERE email=? LIMIT = 1";
+    const sql = "SELECT * FROM users WHERE email=? LIMIT 1";
 
     const [ rows ] = await pool.execute(sql, [email]);
     return rows[0];

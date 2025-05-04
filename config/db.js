@@ -1,7 +1,9 @@
 // Responsible for creating and exporting MySQL pool connection
 
 import mysql from "mysql2/promise";
+
 import dotenv from "dotenv";
+dotenv.config();
 
 // Create a MySQL pool connection for efficient query management
 const pool = mysql.createPool(
