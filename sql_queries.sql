@@ -12,14 +12,24 @@ CREATE TABLE users(
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
+-- Create categories table
+CREATE TABLE categories (
+  category_id INT PRIMARY KEY AUTO_INCREMENT,
+  category_name VARCHAR(100) UNIQUE NOT NULL,
+  description TEXT,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
 -- Create products table
 CREATE TABLE products(
 	product_id INT PRIMARY KEY AUTO_INCREMENT,
+    category_id INT,
     product_name VARCHAR(255) NOT NULL,
     product_description TEXT NOT NULL,
-    price DECIMAL(10, 2) NOT NULL,
+    original_price DECIMAL(10, 2) NOT NULL,
+    current_price DECIMAL(10, 2) NOT NULL,
     stock INT NOT NULL DEFAULT 0,
-    category VARCHAR(100) NOT NULL,
+    FOREIGN KEY (category_id) REFERENCES categories(category_id) ON DELETE NULL,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 

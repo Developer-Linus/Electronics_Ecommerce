@@ -3,7 +3,8 @@
 import express from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
-import authRoutes from './routes/auth_routes.js';
+import authRoutes from './routes/auth_routes.js'; // authentication routes
+import productRoutes from './routes/product_routes.js'; // product routes
 
 dotenv.config();
 
@@ -16,5 +17,11 @@ app.use(express.urlencoded({urlencoded: true}));
 
 // Route definitions
 app.use("/api/auth", authRoutes);
+app.use("/api", productRoutes);
+
+// Root route
+app.get('/', (req, res)=>{
+    res.send('Welcome to Advanced InfoTech.');
+});
 
 export default app;

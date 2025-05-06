@@ -1,7 +1,6 @@
 // Responsible for launching the express server
 
 import app from "./app.js";
-import express from "express";
 import dotenv from "dotenv";
 dotenv.config();
 
