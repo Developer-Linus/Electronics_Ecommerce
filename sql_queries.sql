@@ -34,7 +34,7 @@ CREATE TABLE products(
 );
 
 -- Create product images table
-CREATE TABLE productimages(
+CREATE TABLE product_images(
 	image_id INT PRIMARY KEY AUTO_INCREMENT,
     product_id INT NOT NULL,
     image_url VARCHAR(255) NOT NULL,
@@ -43,7 +43,7 @@ CREATE TABLE productimages(
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 -- Index for fast loading of images
-CREATE INDEX idx_product_images ON productimages(product_id);
+CREATE INDEX idx_product_images ON product_images(product_id);
 
 
 -- Create orders table
