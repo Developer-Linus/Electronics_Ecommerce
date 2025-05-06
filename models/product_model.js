@@ -27,7 +27,7 @@ export async function getAllProducts(){
 
 // Get one product by ID
 export async function getProductById(id){
-    const sql = `SELECT p.*, c.column_name 
+    const sql = `SELECT p.*, c.category_name 
                 FROM products p
                 LEFT JOIN categories c
                 ON p.category_id = c.category_id
