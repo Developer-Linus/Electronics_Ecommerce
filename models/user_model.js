@@ -2,11 +2,11 @@
 
 import pool from "../config/db.js";
 
-export async function createUser({ first_name, last_name, email, password }){
-    const sql = `INSERT INTO users (first_name, last_name, email, password_hash) VALUES (?, ?, ?, ?)`;
+export async function createUser({ first_name, last_name, email, password, user_role = 'Customer' }){
+    const sql = `INSERT INTO users (first_name, last_name, email, password_hash, user_role) VALUES (?, ?, ?, ?, ?)`;
 
     // Result is an array containing the metadata of query execution
-    const [ result ] = await pool.execute(sql, [first_name, last_name, email, password]);
+    const [ result ] = await pool.execute(sql, [first_name, last_name, email, password, user_role]);
     return result.insertId; // Return new user's ID
 }
 

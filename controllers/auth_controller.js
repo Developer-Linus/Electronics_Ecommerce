@@ -19,7 +19,7 @@ export const register = async (req, res) => {
 
         // If user doesn't exist, hash the password
         const hashed = await hashPassword(password);
-        const userId = await createUser({first_name, last_name, email, password: hashed});
+        const userId = await createUser({first_name, last_name, email, password: hashed });
 
         res.status(201).json({ message: "User successfully registered.", userId}, { expiresIn: process.env.JWT_EXPIRES_IN, });
 
@@ -43,7 +43,7 @@ export const login = async(req, res)=>{
             return res.status(401).json({ message: "Invalid email or password."});
         }
 
-        const token = jwt.sign({id: user.id, email: user.email }, process.env.JWT_SECRET);
+        const token = jwt.sign({id: user.id, email: user.email, user_role: user.user_role }, process.env.JWT_SECRET);
 
         res.json( { token })
     } catch (err) {
