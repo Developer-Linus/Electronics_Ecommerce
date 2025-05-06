@@ -4,6 +4,7 @@ import {
     deleteImageByIDController
 } 
 from "../controllers/product_images_controller.js";
+import upload from '../middlewares/upload_middleware.js'; // the multer config
 
 import { verifyToken, isAdmin } from "../middlewares/auth_middlewares.js";
 
@@ -15,7 +16,7 @@ const router = express.Router();
 router.get('/products/:id/images', getImagesByProductIdController);
 
 // Admins can upload/delete images
-router.post('/products/images', verifyToken, isAdmin, createProductImageController);
+router.post('/products/images/upload', verifyToken, isAdmin, upload.single('image'), createProductImageController);
 router.delete('/products/images/:id', verifyToken, isAdmin, deleteImageByIDController);
 
 export default router;

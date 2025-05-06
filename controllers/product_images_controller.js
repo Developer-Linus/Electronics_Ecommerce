@@ -8,13 +8,20 @@ import {
 // Controller to add image to a product
 export const createProductImageController = async(req, res) => {
 try {
-    const { product_id, image_url, alt_text } = req.body;
-    if(!product_id || !image_url || !alt_text){
-        return res.status(400).json({ message: "All fields are required." });
+    const { product_id, alt_text } = req.body;
+    const file = req.file; // Uploaded image file
+
+    if(!product_id || !file || !alt_text){
+        return res.status(400).json({ message: "Product ID, image file, and alt text are required." });
     }
 
+    // Construct image URL from file path
+    const image_url = `/uploads/${file.filename}`; // Static middleware serves from /uploads
+
     const imageId = await createProductImage({ product_id, image_url, alt_text });
-    res.status(201).json({ message: "Product image created successfully.", image_id: imageId});
+    res.status(201).json({ message: "Product image uploaded and saved successfully.", 
+                            image_id: imageId,
+                            image_url: image_url});
 } catch (err) {
     console.error("Error creating product images: ", err);
     res.status(500).json({ message: "Server error creating product images." });
