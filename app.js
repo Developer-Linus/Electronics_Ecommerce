@@ -5,6 +5,7 @@ import cors from 'cors';
 import dotenv from 'dotenv';
 import authRoutes from './routes/auth_routes.js'; // authentication routes
 import productRoutes from './routes/product_routes.js'; // product routes
+import categoryRoutes from './routes/category_routes.js'; // category routes
 
 dotenv.config();
 
@@ -18,6 +19,7 @@ app.use(express.urlencoded({urlencoded: true}));
 // Route definitions
 app.use("/api/auth", authRoutes);
 app.use("/api", productRoutes);
+app.use("/api", categoryRoutes);
 
 // Root route
 app.get('/', (req, res)=>{
