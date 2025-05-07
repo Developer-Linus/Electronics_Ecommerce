@@ -9,6 +9,8 @@ CREATE TABLE users(
     email VARCHAR(255) UNIQUE NOT NULL,
     password_hash VARCHAR(100) NOT NULL,
     user_role ENUM('Customer', 'Admin') DEFAULT 'Customer',
+    is_active BOOLEAN DEFAULT FALSE,
+    activation_token VARCHAR(255),
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 

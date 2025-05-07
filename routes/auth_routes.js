@@ -1,6 +1,10 @@
 // Define API routes for registration and login
 
-import { register, login } from "../controllers/auth_controller.js";
+import {
+  register,
+  login,
+  activateAccountController,
+} from "../controllers/auth_controller.js";
 import {
   registerValidation,
   loginValidation,
@@ -20,5 +24,8 @@ router.post(
 
 // Route to login a user
 router.post("/login", loginValidation, handleValidationResultErrors, login);
+
+// Route to activate account
+router.get("/activate/:token", activateAccountController);
 
 export default router;
