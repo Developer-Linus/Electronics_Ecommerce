@@ -1,7 +1,10 @@
 // Define API routes for registration and login
 
 import { register, login } from "../controllers/auth_controller.js";
-import { registerValidation } from "../validations/auth_validation.js";
+import {
+  registerValidation,
+  loginValidation,
+} from "../validations/auth_validation.js";
 import { handleValidationResultErrors } from "../middlewares/validate_middleware.js";
 import express from "express";
 
@@ -16,6 +19,6 @@ router.post(
 );
 
 // Route to login a user
-router.post("/login", login);
+router.post("/login", loginValidation, handleValidationResultErrors, login);
 
 export default router;
