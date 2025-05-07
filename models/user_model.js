@@ -2,17 +2,29 @@
 
 import pool from "../config/db.js";
 
-export async function createUser({ first_name, last_name, email, password, user_role = 'Customer' }){
-    const sql = `INSERT INTO users (first_name, last_name, email, password_hash, user_role) VALUES (?, ?, ?, ?, ?)`;
+export async function createUser({
+  first_name,
+  last_name,
+  email,
+  password,
+  user_role = "Customer",
+}) {
+  const sql = `INSERT INTO users (first_name, last_name, email, password_hash, user_role) VALUES (?, ?, ?, ?, ?)`;
 
-    // Result is an array containing the metadata of query execution
-    const [ result ] = await pool.execute(sql, [first_name, last_name, email, password, user_role]);
-    return result.insertId; // Return new user's ID
+  // Result is an array containing the metadata of query execution
+  const [result] = await pool.execute(sql, [
+    first_name,
+    last_name,
+    email,
+    password,
+    user_role,
+  ]);
+  return result.insertId; // Return new user's ID
 }
 
-export async function findUserByEmail(email){
-    const sql = `SELECT * FROM users WHERE email=? LIMIT 1`;
+export async function findUserByEmail(email) {
+  const sql = `SELECT * FROM users WHERE email=? LIMIT 1`;
 
-    const [ rows ] = await pool.query(sql, [email]);
-    return rows[0];
+  const [rows] = await pool.query(sql, [email]);
+  return rows[0];
 }
