@@ -2,15 +2,28 @@ import { body } from "express-validator";
 
 // User registration validation
 export const registerValidation = [
-  body("first_name").notEmpty().withMessage("First name is required."),
-  body("last_name").notEmpty().withMessage("Last name is required."),
-  body("email").isEmail().withMessage("Valid email is required."),
+  body("first_name")
+    .trim()
+    .notEmpty()
+    .withMessage("First name is required.")
+    .escape(),
+  body("last_name")
+    .trim()
+    .notEmpty()
+    .withMessage("Last name is required.")
+    .escape(),
+  body("email")
+    .isEmail()
+    .withMessage("Valid email is required.")
+    .normalizeEmail()
+    .escape(),
   body("password")
     .trim()
     .matches(/^(?=.*[A-Z])(?=.*[a-z])(?=.*\d).{8,}$/)
     .withMessage(
       "Passwords must be at least 8 characters long, contain an uppercase letter, a lower case letter, and a number."
-    ),
+    )
+    .escape(),
 ];
 
 // Login validation

@@ -67,6 +67,7 @@ CREATE TABLE IF NOT EXISTS order_items(
     product_id INT,
     quantity INT NOT NULL,
     unit_price DECIMAL(10, 2) NOT NULL,
+    subtotal DECIMAL(10, 2),
     FOREIGN KEY (order_id) REFERENCES orders(order_id),
     FOREIGN KEY (product_id) REFERENCES products(product_id)
 );
