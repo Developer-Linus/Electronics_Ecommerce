@@ -8,6 +8,7 @@ import productRoutes from "./routes/product_routes.js"; // product routes
 import categoryRoutes from "./routes/category_routes.js"; // category routes
 import productImageRoutes from "./routes/product_images_routes.js"; // product images routes
 import orderRoutes from "./routes/order_routes.js"; // Order routes
+import OrderItemsRoutes from "./routes/order_items_routes.js";
 
 import adminRoutes from "./routes/admin_routes.js"; // Admin routes
 
@@ -37,6 +38,7 @@ app.use("/api", categoryRoutes);
 app.use("/api", productImageRoutes);
 app.use("/api", adminRoutes);
 app.use("/api", orderRoutes);
+app.use("/api", OrderItemsRoutes);
 
 // Root route
 app.get("/", (req, res) => {
